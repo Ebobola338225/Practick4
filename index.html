@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Дудка Назарій, ІПЗс-24-1">
+  <meta name="description" content="Сторінка альбому «Полонина» гурту «Гірський туман»: трек-лист, прев'ю треків і інші релізи лейблу.">
+  <title>«Полонина» — Гірський туман | Практична робота №4</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&amp;family=Montserrat:wght@600;700&amp;display=swap">
+  <link rel="stylesheet" href="style.css">
+  <!-- defer: скрипт завантажується паралельно з розбором HTML і виконується після побудови DOM -->
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ===== HEADER ===== -->
+    <header class="site-header">
+      <a class="brand" href="#album-title">
+        <svg class="brand__logo" viewBox="0 0 48 48" width="40" height="40" aria-hidden="true" focusable="false">
+          <circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M24 9 15 22h5l-7 9h7l-6 8h20l-6-8h7l-7-9h5Z" fill="currentColor"/>
+          <path d="M24 39v4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <span class="brand__name">Смерека Records</span>
+      </a>
+      <nav class="site-nav" aria-label="Розділи сторінки">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="#tracklist-title">Трек-лист</a></li>
+          <li><a class="site-nav__link" href="#reviews-title">Відгуки</a></li>
+          <li><a class="site-nav__link" href="#releases-title">Інші релізи</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" type="button" data-action="theme" aria-pressed="false" aria-label="Увімкнути темну тему">
+        <svg class="theme-toggle__moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="currentColor"/></svg>
+        <svg class="theme-toggle__sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </header>
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" aria-label="Інформація про реліз">
+      <picture class="sidebar__cover">
+        <source type="image/webp"
+                srcset="polonyna-400.webp 400w, polonyna-800.webp 800w, polonyna-1200.webp 1200w"
+                sizes="(max-width: 860px) min(100vw - 32px, 360px), 320px">
+        <img class="sidebar__img" src="polonyna-800.jpg" width="800" height="800"
+             alt="Обкладинка альбому: нічні Карпати, ряди гірських хребтів зі смереками, туман у долині й місяць над вершинами"
+             fetchpriority="high" decoding="async">
+      </picture>
+
+      <dl class="meta">
+        <div class="meta__row"><dt>Виконавець</dt><dd>Гірський туман</dd></div>
+        <div class="meta__row"><dt>Рік</dt><dd><time datetime="2026-10-02">2 жовтня 2026</time></dd></div>
+        <div class="meta__row"><dt>Жанр</dt><dd>Ambient, етно</dd></div>
+        <div class="meta__row"><dt>Лейбл</dt><dd>Смерека Records</dd></div>
+      </dl>
+
+      <div class="actions">
+        <button class="btn btn--primary" type="button" data-action="play-all">
+          <svg class="btn__icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5Z" fill="currentColor"/></svg>
+          Слухати прев'ю
+        </button>
+        <button class="btn btn--like" type="button" data-action="like" aria-pressed="false">
+          <svg class="like__icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          <span class="visually-hidden">Подобається, вподобань:</span>
+          <span class="like__count" data-part="like-count">128</span>
+        </button>
+        <button class="btn btn--icon" type="button" data-action="share" aria-haspopup="dialog" aria-controls="share-modal" aria-label="Поділитися посиланням на альбом">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><circle cx="18" cy="5.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="6" cy="12" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="18.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m8.3 10.8 7.4-4.1M8.3 13.2l7.4 4.1" stroke="currentColor" stroke-width="1.8"/></svg>
+        </button>
+      </div>
+      <p class="sidebar__status" role="status" data-part="action-status"></p>
+    </aside>
+
+    <!-- ===== MAIN ===== -->
+    <main class="content">
+      <section class="hero" aria-labelledby="album-title">
+        <p class="hero__type">Альбом, 8 треків</p>
+        <h1 class="hero__title" id="album-title">Полонина</h1>
+        <p class="hero__artist">Гірський туман</p>
+        <ul class="tags" aria-label="Жанри">
+          <li class="tag">Ambient</li>
+          <li class="tag">Етно</li>
+          <li class="tag">Польові записи</li>
+        </ul>
+      </section>
+
+      <section class="panel" aria-labelledby="tracklist-title">
+        <h2 class="panel__title" id="tracklist-title">Трек-лист</h2>
+        <div class="table-wrap">
+          <table class="tracks">
+            <caption class="visually-hidden">Трек-лист альбому «Полонина»: дві сторони по чотири треки, тривалість і кнопка прев'ю</caption>
+            <thead>
+              <tr>
+                <th scope="col" class="tracks__side-col"><span class="th-long">Сторона</span><span class="th-short" aria-hidden="true">Ст.</span></th>
+                <th scope="col">№</th>
+                <th scope="col">Назва</th>
+                <th scope="col" class="tracks__num"><span class="th-long">Тривалість</span><span class="th-short" aria-hidden="true">Час</span></th>
+                <th scope="col" class="tracks__num"><span class="th-long">Прев'ю</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-track="0">
+                <th scope="rowgroup" rowspan="4" class="tracks__side"><span>A</span></th>
+                <td>1</td>
+                <td class="tracks__name">Туман над Говерлою</td>
+                <td class="tracks__num"><time datetime="PT4M12S">4:12</time></td>
+                <td class="tracks__num"><button class="play" type="button" aria-label="Слухати прев'ю: Туман над Говерлою"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5Z" fill="currentColor"/></svg></button></td>
+              </tr>
+              <tr data-track="1">
+                <td>2</td>
+                <td class="tracks__name">Смерекова колискова</td>
+                <td class="tracks__num"><time datetime="PT3M48S">3:48</time></td>
+                <td class="tracks__num"><button class="play" type="button" aria-label="Слухати прев'ю: Смерекова колискова"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5Z" fill="currentColor"/></svg></button></td>
+              </tr>
+              <tr data-track="2">
+                <td>3</td>
+                <td class="tracks__name">Полонина вночі</td>
+                <td class="tracks__num"><time datetime="PT5M6S">5:06</time></td>
+                <td class="tracks__num"><button class="play" type="button" aria-label="Слухати прев'ю: Полонина вночі"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5Z" fill="currentColor"/></svg></button></td>
+              </tr>
+              <tr data-track="3">
+                <td>4</td>
+                <td class="tracks__name">Дзвоники отари</td>
+                <td class="tracks__num"><time datetime="PT3M27S">3:27</time></td>
+                <td class="tracks__num"><button class="play" type="button" aria-label="Слухати прев'ю: Дзвоники отари"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5Z" fill="currentColor"/></svg></button></td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr data-track="4">
+                <th scope="rowgroup" rowspan="4" class="tracks__side"><span>B</span></th>
+                <td>5</td>
+                <td class="tracks__name">Черемош</td>
+                <td class="tracks__num"><time datetime="PT4M41S">4:41</time></td>
+                <td class="tracks__num"><button class="play" type="button" aria-label="Слухати прев'ю: Черемош"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5Z" fill="currentColor"/></svg></button></td>
+              </tr>
+              <tr data-track="5">
+                <td>6</td>
+                <td class="tracks__name">Ватра</td>
+                <td class="tracks__num"><time datetime="PT3M55S">3:55</time></td>
+                <td class="tracks__num"><button class="play" type="button" aria-label="Слухати прев'ю: Ватра"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5Z" fill="currentColor"/></svg></button></td>
+              </tr>
+              <tr data-track="6">
+                <td>7</td>
+                <td class="tracks__name">Зоряна стежка</td>
+                <td class="tracks__num"><time datetime="PT4M18S">4:18</time></td>
+                <td class="tracks__num"><button class="play" type="button" aria-label="Слухати прев'ю: Зоряна стежка"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5Z" fill="currentColor"/></svg></button></td>
+              </tr>
+              <tr data-track="7">
+                <td>8</td>
+                <td class="tracks__name">Світанок у Ворохті</td>
+                <td class="tracks__num"><time datetime="PT5M32S">5:32</time></td>
+                <td class="tracks__num"><button class="play" type="button" aria-label="Слухати прев'ю: Світанок у Ворохті"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5Z" fill="currentColor"/></svg></button></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th scope="row" colspan="3">Разом: 8 треків</th>
+                <td class="tracks__num"><time datetime="PT34M59S">34:59</time></td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="about-title">
+        <h2 class="panel__title" id="about-title">Про альбом</h2>
+        <p class="panel__text">«Полонина» — нічна подорож Карпатами: від туману над Говерлою до світанку у Ворохті. Синтезаторні пади записано разом із польовими записами вітру й дзвоників отари. Сторона A звучить тихіше й повільніше, сторона B світлішає ближче до ранку.</p>
+      </section>
+
+      <section class="panel reviews" aria-labelledby="reviews-title">
+        <div class="reviews__head">
+          <h2 class="panel__title" id="reviews-title">Відгуки слухачів</h2>
+          <p class="reviews__summary" aria-live="polite">
+            <span data-part="reviews-count">2 відгуки</span>, середня оцінка <span data-part="reviews-avg">4,5</span> з 5
+          </p>
+        </div>
+
+        <ol class="reviews__list" data-part="reviews-list">
+          <li class="review" data-rating="5">
+            <article class="review__card">
+              <header class="review__head">
+                <h3 class="review__name">Олеся</h3>
+                <p class="review__stars"><span class="visually-hidden">Оцінка 5 з 5</span><span aria-hidden="true">★★★★★</span></p>
+              </header>
+              <p class="review__text">«Полонина вночі» звучить так, ніби стоїш на хребті й чуєш вітер. Слухаю перед сном.</p>
+              <p class="review__date"><time datetime="2026-10-05">5 жовтня 2026</time></p>
+            </article>
+          </li>
+          <li class="review" data-rating="4">
+            <article class="review__card">
+              <header class="review__head">
+                <h3 class="review__name">Тарас</h3>
+                <p class="review__stars"><span class="visually-hidden">Оцінка 4 з 5</span><span aria-hidden="true">★★★★☆</span></p>
+              </header>
+              <p class="review__text">Сторона B світліша, «Світанок у Ворохті» найкращий трек. Хотілося б довшу версію «Ватри».</p>
+              <p class="review__date"><time datetime="2026-10-11">11 жовтня 2026</time></p>
+            </article>
+          </li>
+        </ol>
+
+        <form class="review-form" data-part="review-form" action="#" method="post" novalidate>
+          <h3 class="review-form__title">Залишити відгук</h3>
+
+          <div class="review-form__row">
+            <div class="field">
+              <label class="field__label" for="review-name">Ваше ім'я</label>
+              <input class="field__input" type="text" id="review-name" name="name" autocomplete="given-name"
+                     required minlength="2" maxlength="40" aria-describedby="review-name-error">
+              <p class="field__error" id="review-name-error" data-error-for="review-name"></p>
+            </div>
+
+            <fieldset class="rating">
+              <legend class="field__label">Оцінка</legend>
+              <div class="rating__stars" data-part="rating-stars">
+                <input class="rating__input" type="radio" id="rate-1" name="rating" value="1" required>
+                <label class="rating__star" for="rate-1" data-value="1"><span class="visually-hidden">1 з 5</span></label>
+                <input class="rating__input" type="radio" id="rate-2" name="rating" value="2">
+                <label class="rating__star" for="rate-2" data-value="2"><span class="visually-hidden">2 з 5</span></label>
+                <input class="rating__input" type="radio" id="rate-3" name="rating" value="3">
+                <label class="rating__star" for="rate-3" data-value="3"><span class="visually-hidden">3 з 5</span></label>
+                <input class="rating__input" type="radio" id="rate-4" name="rating" value="4">
+                <label class="rating__star" for="rate-4" data-value="4"><span class="visually-hidden">4 з 5</span></label>
+                <input class="rating__input" type="radio" id="rate-5" name="rating" value="5">
+                <label class="rating__star" for="rate-5" data-value="5"><span class="visually-hidden">5 з 5</span></label>
+              </div>
+              <p class="field__error" data-error-for="rating"></p>
+            </fieldset>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="review-text">Відгук</label>
+            <textarea class="field__input field__input--area" id="review-text" name="text" rows="4"
+                      required minlength="10" maxlength="300" aria-describedby="review-text-counter review-text-error"></textarea>
+            <div class="field__meta">
+              <p class="field__error" id="review-text-error" data-error-for="review-text"></p>
+              <p class="field__counter" id="review-text-counter" data-part="text-counter">0 / 300</p>
+            </div>
+          </div>
+
+          <div class="review-form__actions">
+            <button class="btn btn--primary" type="submit">Надіслати відгук</button>
+            <p class="review-form__status" role="status" data-part="form-status"></p>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel" aria-labelledby="releases-title">
+        <h2 class="panel__title" id="releases-title">Інші релізи лейблу</h2>
+        <ul class="releases">
+          <li class="release release--featured">
+            <img class="release__img" src="vatra-400.webp" srcset="vatra-400.webp 400w, vatra-800.webp 800w"
+                 sizes="(max-width: 560px) 100vw, 400px" width="400" height="400" loading="lazy" decoding="async"
+                 alt="Обкладинка «Ватра»: темні гори під бордовим небом, зорі й місяць">
+            <div class="release__body">
+              <h3 class="release__title">Ватра</h3>
+              <p class="release__meta">Гірський туман, сингл, 2025</p>
+            </div>
+          </li>
+          <li class="release">
+            <img class="release__img" src="svitanok-400.webp" srcset="svitanok-400.webp 400w, svitanok-800.webp 800w"
+                 sizes="(max-width: 560px) 50vw, 200px" width="400" height="400" loading="lazy" decoding="async"
+                 alt="Обкладинка «Світанок»: теплі персикові хребти на світлому небі">
+            <div class="release__body">
+              <h3 class="release__title">Світанок</h3>
+              <p class="release__meta">Ліс і Луна, EP, 2025</p>
+            </div>
+          </li>
+          <li class="release">
+            <img class="release__img" src="dosch-400.webp" srcset="dosch-400.webp 400w, dosch-800.webp 800w"
+                 sizes="(max-width: 560px) 50vw, 200px" width="400" height="400" loading="lazy" decoding="async"
+                 alt="Обкладинка «Дощ»: сірі гори в серпанку під хмарним небом">
+            <div class="release__body">
+              <h3 class="release__title">Дощ</h3>
+              <p class="release__meta">Чорногора, альбом, 2024</p>
+            </div>
+          </li>
+          <li class="release">
+            <img class="release__img" src="snih-400.webp" srcset="snih-400.webp 400w, snih-800.webp 800w"
+                 sizes="(max-width: 560px) 50vw, 200px" width="400" height="400" loading="lazy" decoding="async"
+                 alt="Обкладинка «Сніг»: блакитні засніжені хребти й місяць">
+            <div class="release__body">
+              <h3 class="release__title">Сніг</h3>
+              <p class="release__meta">Гірський туман, альбом, 2024</p>
+            </div>
+          </li>
+          <li class="release">
+            <img class="release__img" src="polonyna-400.webp" srcset="polonyna-400.webp 400w, polonyna-800.webp 800w"
+                 sizes="(max-width: 560px) 50vw, 200px" width="400" height="400" loading="lazy" decoding="async"
+                 alt="Обкладинка «Полонина. Ремікси»: нічні зелені хребти зі смереками">
+            <div class="release__body">
+              <h3 class="release__title">Полонина. Ремікси</h3>
+              <p class="release__meta">різні виконавці, 2026</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+      <p>© 2026 Смерека Records. Музика й обкладинки створені для навчального проєкту.</p>
+      <p>Практична робота №4. Дудка Назарій, ІПЗс-24-1, Університет Короля Данила</p>
+    </footer>
+
+    <!-- ===== GLOBAL PLAYER ===== -->
+    <section class="player" aria-label="Аудіоплеєр">
+      <div class="player__now">
+        <span class="eq" aria-hidden="true"><span></span><span></span><span></span></span>
+        <p class="player__track">
+          <span class="player__label">Зараз грає</span>
+          <span class="player__title" data-part="now-title">1. Туман над Говерлою</span>
+        </p>
+      </div>
+      <audio class="player__audio" controls preload="metadata" data-part="audio">
+        <source src="polonyna-sampler.ogg" type="audio/ogg; codecs=opus">
+        <source src="polonyna-sampler.mp3" type="audio/mpeg">
+        Ваш браузер не підтримує аудіо. <a href="polonyna-sampler.mp3">Завантажте прев'ю у форматі MP3</a>.
+      </audio>
+      <p class="player__hint"><kbd>Пробіл</kbd> пауза, <kbd>←</kbd> <kbd>→</kbd> попередній і наступний трек</p>
+    </section>
+  </div>
+
+  <button class="to-top" type="button" data-action="to-top" aria-label="Повернутися на початок сторінки">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <!-- ===== МОДАЛЬНЕ ВІКНО «ПОДІЛИТИСЯ» ===== -->
+  <div class="modal" id="share-modal" data-part="share-modal">
+    <div class="modal__backdrop" data-action="close-modal"></div>
+    <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="share-title">
+      <div class="modal__head">
+        <h2 class="modal__title" id="share-title">Поділитися альбомом</h2>
+        <button class="modal__close" type="button" data-action="close-modal" aria-label="Закрити вікно">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <label class="field__label" for="share-url">Посилання на сторінку</label>
+      <div class="share__row">
+        <input class="field__input" type="url" id="share-url" readonly data-part="share-url">
+        <button class="btn btn--primary" type="button" data-action="copy-link">Копіювати</button>
+      </div>
+      <ul class="share__links">
+        <li><a class="share__link" data-share="telegram" href="https://t.me/share/url" target="_blank" rel="noopener">Telegram</a></li>
+        <li><a class="share__link" data-share="facebook" href="https://www.facebook.com/sharer/sharer.php" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a class="share__link" data-share="x" href="https://x.com/intent/post" target="_blank" rel="noopener">X</a></li>
+        <li><button class="share__link" type="button" data-action="native-share">Інші застосунки</button></li>
+      </ul>
+      <p class="modal__status" role="status" data-part="modal-status"></p>
+    </div>
+  </div>
+</body>
+</html>
